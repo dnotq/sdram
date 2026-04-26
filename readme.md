@@ -6,7 +6,7 @@ Tags: FPGA, VHDL, SDRAM, DDR, memory, electronics
 
 # Simple Fixed-Cycle SDRAM Controller
 
-Code on GitHub: <https://github.com/dnotq/sdram>
+Code on GitHub: <https://github.com/dnotq/sdram>  
 Status: FPGA tested, Xilinx Spartan-6, 100MHz using `Winbond W9825G6JH 4M x 4 Banks x 16-bit SDRAM`
 
 ## TL;DR;
@@ -96,7 +96,7 @@ After power-up the SDRAM needs to be initialized before read or write commands c
 5. Issue N refresh cycles.
 
 The controller’s host interface is stratight forward:
-```
+```vhdl
 ( clk_100m0_i     : in     std_logic                     -- Master clock
 ; reset_n_i       : in     std_logic := '0'              -- Reset, active low
 ; refresh_i       : in     std_logic := '0'              -- Initiate a refresh cycle, active high
@@ -116,7 +116,7 @@ After reset, the host should wait for `ready_o` to go high, at which time the SD
 
 
 ## Pseudo Example FSM for 8-bit CPU
-```
+```vhdl
 state_x <= state_r;
 rw_i <= '0';
 we_i <= '1';
